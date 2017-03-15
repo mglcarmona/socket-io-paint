@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Socket.IO chat      
+    link(rel="stylesheet", href="styles.css", attr)
+  body
+    button(id='tomato')
+    button(id='green')
+    button(id='blue')
+    button(id='grey')
+    button(id='black')
+    button(id='orange')
+    select(id='selector')
+      option(value="1") 1
+      option(value="2") 2
+      option(value="3") 3
+      option(value="4") 4
+      option(value="5") 5
+    canvas(id='myCanvas')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js')
+    script(src='/app.js')
+      

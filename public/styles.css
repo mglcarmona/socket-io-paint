@@ -1,0 +1,51 @@
+body {
+  background: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0
+}
+
+button, select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+select {
+  left: 330px;
+  font-size: 18px;
+}
+
+canvas {
+  background: #eee;
+}
+
+#tomato {
+  background-color: #FF6347
+}
+#green {
+  left: 55px;
+  background-color: #00CC99
+}
+#blue {
+  left: 110px;
+  background-color: #0069ff;
+}
+#grey {
+  left: 165px;
+  background-color: #696969;
+}
+#black {
+  left: 220px;
+  background-color: #000;
+}
+#orange {
+  left: 275px;
+  background-color: #FFA712
+}
