@@ -1,74 +1,42 @@
-const socket = io();
-
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-ctx.canvas.width = document.documentElement.clientWidth;
-ctx.canvas.height = document.documentElement.clientHeight;
-
-document.getElementById('tomato').addEventListener('click', () => {
-  ctx.strokeStyle = '#FF6347';
-})
-document.getElementById('green').addEventListener('click', () => {
-  ctx.strokeStyle = '#00CC99';
-})
-document.getElementById('blue').addEventListener('click', () => {
-  ctx.strokeStyle = '#0069ff';
-})
-document.getElementById('grey').addEventListener('click', () => {
-  ctx.strokeStyle = '#696969';
-})
-document.getElementById('black').addEventListener('click', () => {
-  ctx.strokeStyle = '#000000';
-})
-document.getElementById('orange').addEventListener('click', () => {
-  ctx.strokeStyle = '#FFA712';
-})
-
-document.getElementById('selector').addEventListener('change', e => {
-  ctx.lineWidth = e.target.selectedIndex * 5
-})
-
-const mouse = {x: 0, y: 0, prevX: 0, prevY: 0};
-
-const getMousePos = (canvas, evt) => {
-  var rect = canvas.getBoundingClientRect();
-  return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
-  };
-}
-
-canvas.addEventListener('mousemove', e => {
-  const pos = getMousePos(canvas, e)
-  mouse.prevX = pos.x;
-  mouse.prevY = pos.y
-  mouse.x = pos.x;
-  mouse.y = pos.y;
-});
-
-ctx.lineJoin = 'round';
-ctx.lineCap = 'round';
-ctx.strokeStyle = '#00CC99';
-
-canvas.addEventListener('mousedown', e => {
-  ctx.beginPath();
-  ctx.moveTo(mouse.x, mouse.y);
-  canvas.addEventListener('mousemove', onPaint);
-});
-
-canvas.addEventListener('mouseup', () => {
-  canvas.removeEventListener('mousemove', onPaint);
-});
-
-socket.on('mousemove', mouse => {
-  ctx.beginPath();
-  ctx.moveTo(mouse.prevX, mouse.prevY);
-  ctx.lineTo(mouse.x, mouse.y);
-  ctx.stroke();
-})
-
-const onPaint = () => {
-  socket.emit('mousemove', mouse);
-  ctx.lineTo(mouse.x, mouse.y);
-  ctx.stroke();
+const mouse = {
+  click: false,
+  move: false,
+  pos: {x:0, y:0},
+  pos_prev: false
 };
+
+const canvas  = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+const width   = window.innerWidth;
+const height  = window.innerHeight;
+const socket  = io.connect();
+
+canvas.width = width;
+canvas.height = height;
+
+canvas.onmousedown = e => mouse.click = true;
+canvas.onmouseup = e => mouse.click = false;
+
+canvas.onmousemove = e => {
+  mouse.pos.x = e.clientX / width;
+  mouse.pos.y = e.clientY / height;
+  mouse.move = true;
+};
+
+socket.on('draw_line', data => {
+  const line = data.line;
+  context.beginPath();
+  context.moveTo(line[0].x * width, line[0].y * height);
+  context.lineTo(line[1].x * width, line[1].y * height);
+  context.stroke();
+});
+
+const mainLoop = () => {
+  if (mouse.click && mouse.move && mouse.pos_prev) {
+    socket.emit('draw_line', { line: [ mouse.pos, mouse.pos_prev ] });
+    mouse.move = false;
+  }
+  mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
+  setTimeout(mainLoop, 1);
+}
+mainLoop();

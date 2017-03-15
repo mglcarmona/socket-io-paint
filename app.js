@@ -10,11 +10,17 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+const lineHistory = [];
 io.on('connection', socket => {
-  console.log('a user connected');
-  socket.on('mousemove', mouse => {
-    socket.broadcast.emit('mousemove', mouse);
-  })
+
+   for (let i in lineHistory) {
+      socket.emit('draw_line', { line: lineHistory[i] } );
+   }
+
+   socket.on('draw_line', data => {
+      lineHistory.push(data.line);
+      io.emit('draw_line', { line: data.line });
+   });
 });
 
 
