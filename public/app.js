@@ -61,6 +61,6 @@ const mainLoop = () => {
     mouse.move = false;
   }
   mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
-  setTimeout(mainLoop, 1);
+  setTimeout(mainLoop, 40);
 }
 mainLoop();
