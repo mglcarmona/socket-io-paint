@@ -20,6 +20,9 @@ const colorClickHandler = e => {
 const buttonContainer = document.querySelector("#buttonContainer");
 buttonContainer.addEventListener("click", colorClickHandler);
 
+document.getElementById('clear').addEventListener('click', e => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+})
 
 document.getElementById('selector').addEventListener('change', e => {
   currentWidth = e.target.selectedIndex * 5

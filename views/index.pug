@@ -1,7 +1,10 @@
 doctype html
 html
   head
-    title Socket.IO chat      
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Socket.IO Paint
     link(rel="stylesheet", href="styles.css", attr)
   body
     #buttonContainer
@@ -11,17 +14,16 @@ html
       button(data-color='#8426BE' data-name='purple')
       button(data-color='#0069ff' data-name='blue')
       button(data-color='#00FA9A' data-name='green')
+      button(data-color='#888888' data-name='grey')
       button(data-color='#000000' data-name='black')
-      button(data-color='#696969' data-name='grey')
     select(id='selector')
       option(value="1") 1
       option(value="2") 2
       option(value="3") 3
       option(value="4") 4
       option(value="5") 5
+    button(id='clear' class='clear') Clear
     canvas(id='canvas')
-    
-    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js')
     script(src='/app.js')
-      

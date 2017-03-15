@@ -22,9 +22,18 @@ select {
   background-color: white;
   color: #333;
   padding-left: 10px;
-  border: 2px solid grey;
   outline: none;
-  box-sizing: border-box;
+}
+
+.clear {
+  left: 515px;
+  width: 100px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: sans-serif;
+  outline: none;
+  background-color: white;
+
 }
 
 canvas {
@@ -54,11 +63,11 @@ canvas {
   left: 275px;
   background-color: #00FA9A
 }
-[data-name='black'] {
-  left: 330px;
-  background-color: black
-}
 [data-name='grey'] {
+  left: 330px;
+  background-color: #888
+}
+[data-name='black'] {
   left: 385px;
-  background-color: #696969
+  background-color: black
 }
