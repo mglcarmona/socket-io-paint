@@ -4,12 +4,15 @@ html
     title Socket.IO chat      
     link(rel="stylesheet", href="styles.css", attr)
   body
-    button(id='tomato')
-    button(id='green')
-    button(id='blue')
-    button(id='grey')
-    button(id='black')
-    button(id='orange')
+    #buttonContainer
+      button(data-color='#FFA712' data-name='orange')
+      button(data-color='#FF6347' data-name='tomato')
+      button(data-color='#E00097' data-name='pink')
+      button(data-color='#8426BE' data-name='purple')
+      button(data-color='#0069ff' data-name='blue')
+      button(data-color='#00FA9A' data-name='green')
+      button(data-color='#000000' data-name='black')
+      button(data-color='#696969' data-name='grey')
     select(id='selector')
       option(value="1") 1
       option(value="2") 2

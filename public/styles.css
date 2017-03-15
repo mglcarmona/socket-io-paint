@@ -13,39 +13,52 @@ button, select {
   left: 0;
   height: 50px;
   width: 50px;
-  border: 2px solid white;
-  box-sizing: border-box;
+  border: 0;
 }
 
 select {
-  left: 330px;
+  left: 460px;
   font-size: 18px;
+  background-color: white;
+  color: #333;
+  padding-left: 10px;
+  border: 2px solid grey;
+  outline: none;
+  box-sizing: border-box;
 }
 
 canvas {
   background: #eee;
 }
 
-#tomato {
-  background-color: #FF6347
+[data-name='orange'] {
+  background-color: #FFA712
 }
-#green {
+[data-name='tomato'] {
   left: 55px;
-  background-color: #00CC99
+  background-color: tomato
 }
-#blue {
+[data-name='pink'] {
   left: 110px;
+  background-color: #E00097;
+}
+[data-name='purple'] {
+  left: 165px;
+  background-color: #8426BE;
+}
+[data-name='blue'] {
+  left: 220px;
   background-color: #0069ff;
 }
-#grey {
-  left: 165px;
-  background-color: #696969;
-}
-#black {
-  left: 220px;
-  background-color: #000;
-}
-#orange {
+[data-name='green'] {
   left: 275px;
-  background-color: #FFA712
+  background-color: #00FA9A
+}
+[data-name='black'] {
+  left: 330px;
+  background-color: black
+}
+[data-name='grey'] {
+  left: 385px;
+  background-color: #696969
 }
