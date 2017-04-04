@@ -37,6 +37,22 @@ ctx.lineCap = 'round';
 canvas.onmousedown = e => mouse.click = true;
 canvas.onmouseup = e => mouse.click = false;
 
+canvas.addEventListener('touchstart', e => {
+  mouse.click = true;
+  console.log('start');
+});
+
+canvas.addEventListener('touchend', e => {
+  mouse.click = false;
+  console.log('end');
+});
+
+canvas.addEventListener('touchmove', e => {
+  mouse.pos.x = e.targetTouches[0].pageX / width;
+  mouse.pos.y = e.targetTouches[0].pageY / height;
+  mouse.move = true;
+});
+
 canvas.onmousemove = e => {
   mouse.pos.x = e.clientX / width;
   mouse.pos.y = e.clientY / height;
@@ -57,6 +73,7 @@ socket.on('draw_line', data => {
 
 const mainLoop = () => {
   if (mouse.click && mouse.move && mouse.pos_prev) {
+    console.log('enter');
     socket.emit('draw_line', { line: [mouse.pos, mouse.pos_prev, currentWidth, currentColor] });
     mouse.move = false;
   }

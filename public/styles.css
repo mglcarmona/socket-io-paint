@@ -1,5 +1,5 @@
 body {
-  background: tomato;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,67 +7,76 @@ body {
   margin: 0
 }
 
-button, select {
+canvas {
+  background: #eee;
+}
+
+.toolsContainer {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button, select {
   height: 50px;
   width: 50px;
   border: 0;
 }
 
 select {
-  left: 460px;
   font-size: 18px;
   background-color: white;
   color: #333;
-  padding-left: 10px;
+  margin-left: 50px;
   outline: none;
 }
 
 .clear {
-  left: 515px;
   width: 100px;
   border-radius: 8px;
   font-size: 18px;
   font-family: sans-serif;
   outline: none;
   background-color: white;
-
+  margin-left: 10px;
 }
 
-canvas {
-  background: #eee;
-}
-
-[data-name='orange'] {
+[data-color='#FFA712'] {
   background-color: #FFA712
 }
-[data-name='tomato'] {
-  left: 55px;
-  background-color: tomato
+[data-color='#FF6347'] {
+  background-color: #FF6347
 }
-[data-name='pink'] {
-  left: 110px;
+[data-color='#E00097'] {
   background-color: #E00097;
 }
-[data-name='purple'] {
-  left: 165px;
+[data-color='#8426BE'] {
   background-color: #8426BE;
 }
-[data-name='blue'] {
-  left: 220px;
+[data-color='#0069ff'] {
   background-color: #0069ff;
 }
-[data-name='green'] {
-  left: 275px;
+[data-color='#00FA9A'] {
   background-color: #00FA9A
 }
-[data-name='grey'] {
-  left: 330px;
+[data-color='#888888'] {
   background-color: #888
 }
-[data-name='black'] {
-  left: 385px;
-  background-color: black
+[data-color='#000000'] {
+  background-color: #000
 }
